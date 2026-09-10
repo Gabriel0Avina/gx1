@@ -30,7 +30,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  // TODO(Gabriel): cambiar por el dominio real cuando exista
+  // URL pública resuelta en next.config.ts para cada entorno de despliegue.
   metadataBase: new URL(site.url),
   // ≤60 caracteres para no truncarse en el SERP
   title: "GX1 — Marketing y automatización con IA en Guadalajara",
