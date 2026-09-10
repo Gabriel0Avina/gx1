@@ -3,7 +3,6 @@
  * TODO(Gabriel): reemplazar los placeholders restantes antes de publicar:
  *  - SCHEDULE_URL: link de Calendly/Cal.com cuando exista;
  *    mientras tanto el CTA "Agenda una llamada" abre WhatsApp con mensaje prellenado.
- *  - CONTACT_EMAIL: confirmar correo real de la agencia
  *  - NEXT_PUBLIC_SITE_URL: dominio propio cuando se confirme;
  *    Vercel usa automáticamente su dominio de producción mientras tanto.
  *  - sameAs: URLs de las redes sociales propias de GX1 cuando existan
@@ -25,7 +24,7 @@ export const site = {
   region: "Jalisco",
   country: "MX",
   geo: { lat: 20.6597, lng: -103.3496 },
-  contactEmail: "hola@gx1.mx",
+  contactEmail: "gx1.bse@gmail.com",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   whatsappNumber: WHATSAPP_NUMBER,
   // TODO(Gabriel): agregar URLs reales de redes sociales cuando existan
