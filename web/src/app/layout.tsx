@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { Archivo, Geist_Mono, Jost } from "next/font/google";
 import { site } from "@/lib/site";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
+import SmoothScroll from "@/components/SmoothScroll";
+import CursorGlow from "@/components/CursorGlow";
+import CustomCursor from "@/components/CustomCursor";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import "./globals.css";
 
 /* Archivo variable: eje wdth 62–125 — display expandido y labels condensados
@@ -32,22 +39,25 @@ const jost = Jost({
 export const metadata: Metadata = {
   // URL pública resuelta en next.config.ts para cada entorno de despliegue.
   metadataBase: new URL(site.url),
+  // Metadata del inicio; cada página de servicio la sobrescribe completa.
   // ≤60 caracteres para no truncarse en el SERP
-  title: "GX1 — Marketing y automatización con IA en Guadalajara",
+  title: "GX1 | Agencia digital con IA en Guadalajara",
   description:
-    "Web, contenido, video y automatización con IA conectados bajo un solo sistema. Para negocios que necesitan presencia digital constante sin equipo interno.",
+    "Marca, video, web y automatización con IA en un solo equipo. Agencia integral en Guadalajara para empresas que quieren verse, encontrarse y vender.",
   alternates: { canonical: "/" },
   keywords: [
-    "agencia de marketing Guadalajara",
-    "automatización con IA",
-    "marketing digital",
-    "desarrollo web",
-    "contenido para redes sociales",
+    "agencia digital Guadalajara",
+    "agencia integral",
+    "diseño de marca Guadalajara",
+    "SEO local Guadalajara",
+    "videos para redes sociales",
+    "software a la medida Guadalajara",
+    "automatización de ventas",
   ],
   openGraph: {
-    title: "GX1 — Marketing y automatización con IA",
+    title: "GX1 | Agencia digital con IA en Guadalajara",
     description:
-      "Web, contenido, video y automatización con IA conectados bajo un solo sistema.",
+      "Marca, video, web y automatización con IA en un solo equipo, para empresas que quieren verse, encontrarse y vender.",
     url: "/",
     siteName: site.name,
     locale: "es_MX",
@@ -55,9 +65,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GX1 — Marketing y automatización con IA",
+    title: "GX1 | Agencia digital con IA en Guadalajara",
     description:
-      "Web, contenido, video y automatización con IA conectados bajo un solo sistema.",
+      "Marca, video, web y automatización con IA en un solo equipo, para empresas que quieren verse, encontrarse y vender.",
   },
 };
 
@@ -72,8 +82,16 @@ export default function RootLayout({
       className={`${archivo.variable} ${geistMono.variable} ${jost.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <JsonLd />
-        {children}
+        {/* Entidad GX1: válida en todo el sitio */}
+        <JsonLd graph={[organizationSchema(), websiteSchema()]} />
+        <SmoothScroll>
+          <CursorGlow />
+          <CustomCursor />
+          <Navbar />
+          {children}
+          <Footer />
+          <WhatsAppFloat />
+        </SmoothScroll>
       </body>
     </html>
   );

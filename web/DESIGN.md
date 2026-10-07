@@ -6,17 +6,40 @@ grande y expandido es el fuselaje. No es neón-cyberpunk: es telemetría calibra
 
 Arco de luz — "escenas del estudio": la página alterna claro/oscuro como cortes de un
 video editado, con el estudio del video de marca (blanco, metal pulido, plexus) como el
-mundo claro. Coreografía: Hero (claro) → Marquee (oscuro) → Diagnóstico (oscuro) →
-Sistemas (claro) → Secuencia (oscuro) → Hangar (claro) → FAQ (oscuro) → Despegue (claro,
-cierre bookend con el Hero). Cada frontera claro↔oscuro lleva el corte diagonal del ala
-(`.scene-cut-in`: clip 4vw + margin negativo para solapar sin huecos).
+mundo claro. Cada frontera claro↔oscuro lleva el corte diagonal del ala
+(`.scene-cut-in`: clip 4vw + margin negativo para solapar sin huecos); escenas del mismo
+tono van continuas, sin corte.
+
+Arquitectura (v2, oct 2026): el sitio se ordena en un solo camino de tres etapas —
+**Se ve · Se encuentra · Vende** — y tiene inicio + 5 páginas de servicio
+(`/servicios/[slug]`). El shell (Navbar, Footer, SmoothScroll, cursores, WhatsApp
+flotante) vive en `app/layout.tsx`; el contenido sale de `lib/content.ts`.
+
+Coreografía del inicio: Hero (claro, video) → Marquee (oscuro) → Camino (oscuro,
+continuo) → Servicios (claro + plexus) → Marca personal (oscuro) → Cómo trabajamos
+(claro) → Formas de trabajar (oscuro) → Casos (claro) → Sobre GX1 (oscuro) → FAQ
+(oscuro, continuo) → Contacto (claro + plexus, bookend con el hero) → Footer.
+
+Página de servicio: Hero claro (ala, breadcrumb, H1 con keyword) → Qué incluye (oscuro)
+→ [Marca personal, solo en marca-e-identidad] → Cómo trabajamos (claro) → Cómo se
+contrata (oscuro, la forma del servicio como líder) → Otros servicios + Contacto con el
+interés preseleccionado (claro).
 
 Material "glossy metal" (`.material-metal-dark` / `.material-metal-light`): paneles con
 degradado diagonal 155° tipo metal cepillado, highlight superior 1px, y filo cyan que se
 enciende al entrar en viewport (`.material-lit-edge` + data-lit, interpolado por CSS).
 Regla de composición anti-clones: en cada grupo, UN elemento líder con panel completo y
 los secundarios en lenguaje silencioso (solo separador) — nunca N paneles idénticos.
-Textura plexus (`Plexus.tsx`, SVG estático determinista): solo en Sistemas y Despegue.
+Líderes actuales: Vende (Camino), Marca e identidad (Servicios), kit de marca (Marca
+personal), Paquete integral (Formas), CAYCER (Casos), fundador (Sobre GX1), formulario
+(Contacto). Camino usa además un crescendo tipográfico: cada etapa más grande que la
+anterior.
+Textura plexus (`Plexus.tsx`, SVG estático determinista): máximo 2 por página — en el
+inicio, Servicios y Contacto; en servicios, solo Contacto.
+
+Contenido sobre el pliegue (heros): toda animación de entrada con opacidad lleva un
+seguro (`setTimeout → tl.progress(1)`) para que nunca quede invisible si los frames se
+congelan (pestaña tapada, render sin pantalla).
 
 ## Color
 
@@ -96,5 +119,6 @@ y agujas que se asientan, ease-out expo/quint, nunca bounce.
 ## Assets
 
 - Logo: `public/gx1-logo.png` (fondo blanco — solo usable en sección hangar o recortado).
+- Ala real (navbar, favicon, placeholder del fundador): `public/gx1-wing.png`, `app/icon.png`, `app/apple-icon.png`.
 - Wing motif: recrear como SVG de trazos (filo + 3 plumas) para animar con DrawSVG-style
   (stroke-dashoffset), no usar el PNG.

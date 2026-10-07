@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_SITE_URL: siteUrl,
   },
+  // No hay índice de servicios: la lista vive en la sección del inicio
+  async redirects() {
+    return [
+      { source: "/servicios", destination: "/#servicios", permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;

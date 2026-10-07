@@ -38,7 +38,8 @@ export default function Transmisiones() {
   return (
     <section
       ref={scope}
-      className="scene-cut-in bg-void px-5 pb-24 pt-[calc(6rem+4vw)] sm:px-8 lg:pb-36 lg:pt-[calc(9rem+4vw)]"
+      id="preguntas"
+      className="bg-void px-5 pb-24 pt-12 sm:px-8 lg:pb-36 lg:pt-16"
     >
       <div className="mx-auto max-w-[900px]">
         <div data-faq-head>

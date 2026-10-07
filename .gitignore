@@ -34,3 +34,6 @@ yarn-error.log*
 
 # Contexto de marketing con datos de cliente (no publicar)
 .agents/
+
+# Caché local del hook de diseño (impeccable)
+**/.impeccable/hook.cache.json

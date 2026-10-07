@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { site } from "@/lib/site";
+import Link from "next/link";
 import { BOOT_HERO_DELAY, shouldBoot } from "@/lib/boot";
 import Magnetic from "./Magnetic";
 import HeroVideoBg from "./HeroVideoBg";
@@ -66,6 +66,13 @@ export default function Hero() {
           1.0
         );
 
+      // Seguro: si los frames se congelan (pestaña tapada, render sin
+      // pantalla), el titular y los CTAs nunca deben quedar invisibles
+      const failsafe = window.setTimeout(
+        () => tl.progress(1),
+        (boot + 3) * 1000
+      );
+
       // El video se queda atrás al hacer scroll: profundidad real
       gsap.to("[data-hero-video]", {
         yPercent: 14,
@@ -77,6 +84,8 @@ export default function Hero() {
           scrub: 0.6,
         },
       });
+
+      return () => window.clearTimeout(failsafe);
     });
 
     return () => mm.revert();
@@ -107,27 +116,30 @@ export default function Hero() {
           data-ign="fade"
           className="type-logo text-[0.7rem] tracking-[0.16em] text-hangar-ink-soft sm:text-sm"
         >
-          Agencia de marketing y automatización con IA
+          Agencia integral con IA&nbsp;·&nbsp;Guadalajara
         </p>
       </div>
 
       {/* Bloque de texto: compacto, abajo-izquierda — el aire es del video */}
       <div className="relative mx-auto w-full max-w-[1400px]">
         <h1
-          aria-label="Atrae más clientes con marketing y automatización impulsados por IA"
-          className="type-display max-w-3xl text-[clamp(2.4rem,6.5vw,4.5rem)] text-hangar-ink"
+          aria-label="Haz que tu empresa se vea, se encuentre y venda en digital."
+          className="type-display max-w-4xl text-[clamp(2.4rem,6.5vw,4.75rem)] text-hangar-ink"
         >
+          {/* Las tres etapas del camino son el titular: se vea · se encuentre · venda */}
           <span aria-hidden>
-            <span className="block overflow-hidden">
-              <Chars text="Atrae más clientes" />
-            </span>
             <span className="type-condensed block overflow-hidden text-hangar-ink-soft">
-              <Chars text="con marketing y automatización" />
+              <Chars text="Haz que tu empresa" />
             </span>
             <span className="block overflow-hidden">
-              <Chars text="impulsados por" />
+              <Chars text="se vea, se encuentre" />
+            </span>
+            <span className="block overflow-hidden">
+              <Chars text="y" />
               <span>&nbsp;</span>
-              <Chars text="IA" className="text-cyan-deep" />
+              <Chars text="venda" className="text-cyan-deep" />
+              <span>&nbsp;</span>
+              <Chars text="en digital." />
             </span>
           </span>
         </h1>
@@ -137,37 +149,32 @@ export default function Hero() {
             data-ign="fade"
             className="max-w-xl leading-relaxed text-hangar-ink-soft"
           >
-            GX1 es la agencia de marketing en Guadalajara que conecta web,
-            contenido, video y automatización bajo un solo sistema y un solo
-            aliado, y lo ejecuta cada semana. Para negocios que no tienen
-            tiempo de hacerlo todo.
+            GX1 es una agencia integral de Guadalajara. Juntamos marca, video,
+            web y automatización con IA en un solo equipo, para que no tengas
+            que coordinar cuatro proveedores.
           </p>
           <div data-ign="fade" className="flex flex-col gap-3 sm:flex-row">
             <Magnetic>
-              <a
-                href={site.scheduleUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/#contacto"
                 className="btn-wing btn-sweep inline-flex min-h-13 w-full items-center justify-center bg-cyan px-8 text-base font-semibold text-void-deep sm:w-auto"
               >
-                Agenda una llamada
-              </a>
+                Cotiza tu proyecto
+              </Link>
             </Magnetic>
             <Magnetic>
-              <a
-                href={site.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/#servicios"
                 className="inline-flex min-h-13 w-full items-center justify-center border border-hangar-ink/30 px-8 text-base font-semibold text-hangar-ink transition-colors duration-200 hover:border-cyan-deep hover:text-cyan-deep sm:w-auto"
               >
-                WhatsApp
-              </a>
+                Ver servicios
+              </Link>
             </Magnetic>
           </div>
         </div>
 
         <p data-ign="fade" className="type-telemetry mt-8 text-hangar-ink-soft">
-          Diagnóstico inicial sin costo&nbsp;·&nbsp;Sin compromiso
+          Build&nbsp;·&nbsp;Scale&nbsp;·&nbsp;Evolve
         </p>
       </div>
     </section>

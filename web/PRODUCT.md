@@ -10,7 +10,11 @@ Dueños de PyMEs y autoridades técnicas de negocios establecidos en Guadalajara
 
 ## Product Purpose
 
-Landing page de GX1, agencia de marketing y automatización con IA. La página ES el portafolio: si GX1 vende "operación digital de nivel superior", la landing tiene que demostrarlo en los primeros 3 segundos, no explicarlo. Éxito = el visitante agenda una llamada de diagnóstico o escribe por WhatsApp, convencido de que "esta gente sí sabe".
+Sitio de GX1, **agencia integral con IA** en Guadalajara (posicionamiento v2, oct 2026). Une marca, video, web y automatización con IA en un solo equipo, para que el cliente no tenga que coordinar cuatro proveedores. Mensaje central: "Haz que tu empresa se vea, se encuentre y venda en digital."
+
+La idea que ordena todo: un solo camino con tres etapas — **Se ve** (marca e identidad; web y software), **Se encuentra** (visibilidad y campañas; video y redes), **Vende** (automatización con IA). Cinco servicios que funcionan solos y se conectan entre sí, más la oferta de marca personal para fundadores. Tres formas de contratar (por proyecto, mensualidad, paquete integral); el sitio no publica precios.
+
+La página ES el portafolio: tiene que demostrar el nivel en los primeros 3 segundos, no explicarlo. Éxito = el visitante cotiza (formulario que abre WhatsApp con sus datos) o escribe por WhatsApp. Casos: solo lo que ya es verdad — sin cifras inventadas y sin nombres de clientes sin permiso escrito.
 
 ## Brand Personality
 

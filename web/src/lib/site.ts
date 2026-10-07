@@ -16,9 +16,12 @@ const whatsappLink = (text: string) =>
 export const site = {
   name: "GX1",
   legalName: "GX1 IA Systems",
-  tagline: "Build. Scale. Evolve.",
+  tagline: "Build · Scale · Evolve",
   description:
-    "Agencia de marketing y automatización con IA en Guadalajara. Web, contenido, video y automatización conectados bajo un solo sistema.",
+    "Agencia integral con IA en Guadalajara. Marca, video, web y automatización en un solo equipo, para empresas que quieren verse, encontrarse y vender en digital.",
+  // Teléfono público (mismo número que WhatsApp), en formato legible y E.164
+  phoneDisplay: "33 1100 3471",
+  phoneHref: `tel:+${WHATSAPP_NUMBER}`,
   location: "Guadalajara, Jalisco, México",
   city: "Guadalajara",
   region: "Jalisco",
@@ -34,3 +37,5 @@ export const site = {
   ),
   whatsappUrl: whatsappLink("Hola, me interesa saber más sobre GX1."),
 };
+
+export { whatsappLink };

@@ -6,6 +6,8 @@ export function shouldBoot(): boolean {
   // Pestaña abierta en background: los rAF están pausados y la secuencia
   // se quedaría congelada tapando el contenido — mejor no arrancarla
   if (document.visibilityState === "hidden") return false;
+  // Llegada directa a una sección (/#contacto): el usuario ya sabe a dónde va
+  if (window.location.hash) return false;
   try {
     return !window.sessionStorage.getItem("gx1-booted");
   } catch {

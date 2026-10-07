@@ -1,11 +1,21 @@
 import { ImageResponse } from "next/og";
+import { etapas, getServicio } from "@/lib/content";
 
-export const alt =
-  "GX1 — Agencia integral con IA en Guadalajara";
+export const alt = "Servicio de GX1, agencia integral con IA en Guadalajara";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OgImage() {
+/* Imagen para compartir (WhatsApp, redes) de cada página de servicio:
+   mismo lenguaje que la del inicio, con el nombre y la etapa del servicio. */
+export default async function OgServicio({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const s = getServicio(slug);
+  const etapa = etapas.find((e) => e.id === s?.etapa)?.nombre ?? "";
+
   return new ImageResponse(
     (
       <div
@@ -46,27 +56,28 @@ export default function OgImage() {
         />
         <div
           style={{
-            fontSize: 28,
+            fontSize: 26,
             color: "#22d3ee",
             letterSpacing: 6,
             textTransform: "uppercase",
           }}
         >
-          SYS 100% · IA Systems
+          {`Servicio ${s?.num ?? ""} · ${etapa}`}
         </div>
         <div
           style={{
-            fontSize: 150,
-            fontWeight: 800,
+            fontSize: 86,
+            fontWeight: 700,
             color: "#f2f5f9",
-            letterSpacing: -2,
-            marginTop: 8,
+            lineHeight: 1.05,
+            marginTop: 14,
+            maxWidth: 980,
           }}
         >
-          GX1
+          {s?.nombre ?? "GX1"}
         </div>
-        <div style={{ fontSize: 36, color: "#9aa8ba", marginTop: 4 }}>
-          Agencia integral con IA · Guadalajara
+        <div style={{ fontSize: 30, color: "#9aa8ba", marginTop: 22 }}>
+          GX1 · Agencia integral con IA · Guadalajara
         </div>
       </div>
     ),

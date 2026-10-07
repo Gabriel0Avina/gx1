@@ -1,11 +1,12 @@
 const items = [
+  "Marca",
+  "Visibilidad",
+  "Video",
+  "Web",
+  "Automatización",
   "Build",
   "Scale",
   "Evolve",
-  "Web",
-  "Contenido",
-  "Video IA",
-  "Automatización",
 ];
 
 /* Cinta de estado: una pasada del contenido duplicada para el loop infinito */
