@@ -266,6 +266,8 @@ export const marcaPersonal = {
 
 /* Casos: solo lo que ya es verdad. Los proyectos en curso van sin nombre
    hasta tener permiso escrito del cliente. */
+export type CasoImagen = { src: string; alt: string; vertical?: boolean };
+
 export const casos = {
   lider: {
     cliente: "CAYCER Ingeniería y Metrología",
@@ -281,14 +283,44 @@ export const casos = {
   },
   enCurso: [
     {
-      cliente: "Empresa de fumigación y control de plagas",
-      hace: "Landing page y catálogo de servicios; como siguiente etapa, un sistema para controlar servicios, personal y manuales por tipo de servicio.",
-      estado: "Proyecto en curso",
+      cliente: "ECOPESTS",
+      giro: "Control de plagas · Guadalajara",
+      estado: "Sitio en línea · Fase 2 en desarrollo",
+      sitio: { url: "https://ecopests.com.mx", texto: "ecopests.com.mx" },
+      hace: "Les construimos su presencia digital completa: sitio web, catálogo de servicios, dominio y correo propios, y ahora el sistema para operar sus servicios.",
+      pasos: [
+        "Diagnóstico de sus servicios, clientes y requisitos sanitarios",
+        "Sitio web con una página por plaga y por tipo de cliente",
+        "Plano interactivo que muestra dónde se esconde cada plaga",
+        "Catálogo de servicios y presentación comercial en PDF",
+        "Dominio y correo propios",
+        "Fase 2: sistema para controlar servicios, personal y documentación",
+      ],
+      imagenes: <CasoImagen[]>[
+        { src: "/casos/ecopests-inicio.webp", alt: "Página de inicio del sitio de ECOPESTS: control de plagas en Guadalajara" },
+        { src: "/casos/ecopests-plano.webp", alt: "Plano interactivo del sitio de ECOPESTS que muestra dónde se esconde cada plaga" },
+        { src: "/casos/ecopests-catalogo.webp", alt: "Catálogo de tratamientos por plaga en el sitio de ECOPESTS" },
+      ],
     },
     {
-      cliente: "Carpintería residencial premium",
-      hace: "Sitio web con galería de obras y un sistema que controlará las obras en producción y compartirá el avance con el cliente final.",
-      estado: "Proyecto en curso",
+      cliente: "RP Carpintería Residencial",
+      giro: "Carpintería a la medida · Jalisco",
+      estado: "Sistema en piloto · Sitio en revisión",
+      sitio: null,
+      hace: "Desarrollamos su sistema de control de obra, de la medición a la entrega, y su sitio web para despachos de arquitectura.",
+      pasos: [
+        "Levantamiento del proceso real del taller, de la medida a la instalación",
+        "App en el celular para medir en obra y comparar contra el diseño",
+        "Tablero de taller para ver cada mueble por etapa",
+        "Panel por obra con avance, fabricación y entregas",
+        "Sitio web para arquitectos con galería de obras",
+        "Portal para que el cliente siga el avance de su obra",
+      ],
+      imagenes: <CasoImagen[]>[
+        { src: "/casos/rp-sitio.webp", alt: "Sitio web de RP Carpintería Residencial: carpintería a la medida, de la medición a la entrega" },
+        { src: "/casos/rp-tablero.webp", alt: "Tablero de taller del sistema de control de obra de RP Carpintería" },
+        { src: "/casos/rp-medidas.webp", alt: "App de celular de RP Carpintería para capturar medidas en obra", vertical: true },
+      ],
     },
   ],
   confianza: [

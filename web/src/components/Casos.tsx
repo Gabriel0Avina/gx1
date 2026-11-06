@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Kicker from "./Kicker";
@@ -11,8 +12,8 @@ import { casos } from "@/lib/content";
 gsap.registerPlugin(ScrollTrigger);
 
 /* Casos: solo lo que ya es verdad. CAYCER (trabajo continuo) es el líder
-   con su embudo documentado; los proyectos en curso van sin nombre hasta
-   tener permiso escrito, y sin cifras que todavía no existen. */
+   con su embudo documentado; ECOPESTS y RP muestran cómo trabajamos y
+   capturas reales de lo construido, sin cifras que todavía no existen. */
 export default function Casos() {
   const scope = useRef<HTMLElement>(null);
   const { lider, enCurso, confianza } = casos;
@@ -153,17 +154,77 @@ export default function Casos() {
           </div>
         </article>
 
-        {/* Proyectos en curso: lenguaje silencioso */}
-        <div data-casos-curso className="mt-14 grid gap-10 md:grid-cols-2 md:gap-14">
-          {enCurso.map((c) => (
-            <article key={c.cliente} data-caso-curso className="border-t border-hangar-line pt-6">
-              <p className="type-telemetry text-hangar-ink-soft">● {c.estado}</p>
-              <h3 className="type-display mt-3 text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight text-hangar-ink">
-                {c.cliente}
-              </h3>
-              <p className="mt-3 max-w-md leading-relaxed text-hangar-ink-soft">
-                {c.hace}
-              </p>
+        {/* ECOPESTS y RP: cómo trabajamos + capturas reales de su sitio y sistema */}
+        <div data-casos-curso className="mt-20 flex flex-col gap-20 lg:gap-28">
+          {enCurso.map((c, i) => (
+            <article
+              key={c.cliente}
+              data-caso-curso
+              className="grid gap-10 border-t border-hangar-line pt-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14"
+            >
+              <div className={i % 2 ? "lg:order-2" : undefined}>
+                <p className="type-telemetry text-cyan-deep">● {c.estado}</p>
+                <h3 className="type-display mt-3 text-[clamp(1.8rem,3.4vw,2.8rem)] leading-tight text-hangar-ink">
+                  {c.cliente}
+                </h3>
+                <p className="type-telemetry mt-2 text-hangar-ink-soft">{c.giro}</p>
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-hangar-ink-soft">
+                  {c.hace}
+                </p>
+                <p className="type-telemetry mt-8 text-hangar-ink-soft">Cómo trabajamos</p>
+                <ol className="mt-4 border-t border-hangar-line">
+                  {c.pasos.map((p, k) => (
+                    <li
+                      key={p}
+                      className="flex gap-4 border-b border-hangar-line py-3 leading-snug text-hangar-ink"
+                    >
+                      <span className="type-telemetry pt-0.5 text-cyan-deep">
+                        {String(k + 1).padStart(2, "0")}
+                      </span>
+                      {p}
+                    </li>
+                  ))}
+                </ol>
+                {c.sitio && (
+                  <a
+                    href={c.sitio.url}
+                    target="_blank"
+                    rel="noopener"
+                    className="mt-8 inline-flex min-h-12 items-center gap-2 border border-hangar-ink px-6 font-semibold text-hangar-ink transition-colors hover:bg-hangar-ink hover:text-hangar"
+                  >
+                    Ver {c.sitio.texto} <span aria-hidden>↗</span>
+                  </a>
+                )}
+              </div>
+
+              {/* Galería: una captura principal y dos de apoyo */}
+              <div className={i % 2 ? "lg:order-1" : undefined}>
+                <div className="material-metal-light relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={c.imagenes[0].src}
+                    alt={c.imagenes[0].alt}
+                    fill
+                    sizes="(min-width: 1024px) 52vw, 92vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-4">
+                  {c.imagenes.slice(1).map((img) => (
+                    <div
+                      key={img.src}
+                      className={`material-metal-light relative aspect-[16/10] overflow-hidden ${img.vertical ? "bg-void" : ""}`}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(min-width: 1024px) 26vw, 46vw"
+                        className={img.vertical ? "object-contain object-top" : "object-cover object-top"}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </article>
           ))}
         </div>

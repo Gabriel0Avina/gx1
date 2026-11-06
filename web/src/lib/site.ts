@@ -7,8 +7,8 @@
  *    Vercel usa automáticamente su dominio de producción mientras tanto.
  *  - sameAs: URLs de las redes sociales propias de GX1 cuando existan
  */
-// WhatsApp de GX1: 52 (México) + 33 1100 3471 (Guadalajara)
-const WHATSAPP_NUMBER = "523311003471";
+// WhatsApp de GX1: 52 (México) + 33 2636 7463 (Guadalajara)
+const WHATSAPP_NUMBER = "523326367463";
 
 const whatsappLink = (text: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
@@ -20,7 +20,7 @@ export const site = {
   description:
     "Agencia integral con IA en Guadalajara. Marca, video, web y automatización en un solo equipo, para empresas que quieren verse, encontrarse y vender en digital.",
   // Teléfono público (mismo número que WhatsApp), en formato legible y E.164
-  phoneDisplay: "33 1100 3471",
+  phoneDisplay: "33 2636 7463",
   phoneHref: `tel:+${WHATSAPP_NUMBER}`,
   location: "Guadalajara, Jalisco, México",
   city: "Guadalajara",

@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { preguntas, pasos, servicios, type Servicio } from "@/lib/content";
+import { videoPresentacion as v } from "@/lib/video";
 
 /* Constructores de datos estructurados (schema.org). Cada página monta solo
    lo que es visible en ella: la entidad GX1 en todo el sitio, FAQPage y
@@ -93,6 +94,24 @@ export function howToSchema() {
       name: p.titulo,
       text: p.texto,
     })),
+  };
+}
+
+export function videoSchema() {
+  return {
+    "@type": "VideoObject",
+    "@id": `${site.url}/#video`,
+    name: v.nombre,
+    description: v.descripcion,
+    thumbnailUrl: `${site.url}${v.poster}`,
+    contentUrl: `${site.url}${v.fuentes.grande}`,
+    uploadDate: v.publicado,
+    duration: v.duracion,
+    inLanguage: "es-MX",
+    width: v.ancho,
+    height: v.alto,
+    transcript: v.transcripcion.join(" "),
+    publisher: { "@id": orgId },
   };
 }
 

@@ -2,6 +2,7 @@ import Preloader from "@/components/Preloader";
 import JsonLd from "@/components/JsonLd";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
+import Presentacion from "@/components/Presentacion";
 import Camino from "@/components/Camino";
 import Servicios from "@/components/Servicios";
 import MarcaPersonal from "@/components/MarcaPersonal";
@@ -11,7 +12,7 @@ import Casos from "@/components/Casos";
 import Nosotros from "@/components/Nosotros";
 import Transmisiones from "@/components/Transmisiones";
 import Contacto from "@/components/Contacto";
-import { faqSchema, howToSchema } from "@/lib/schema";
+import { faqSchema, howToSchema, videoSchema } from "@/lib/schema";
 
 /* Inicio: un solo camino con tres etapas (Se ve · Se encuentra · Vende).
    Escenas alternadas claro/oscuro; el shell (navbar, footer, scroll) vive
@@ -19,12 +20,13 @@ import { faqSchema, howToSchema } from "@/lib/schema";
 export default function Home() {
   return (
     <>
-      {/* FAQ y proceso: visibles solo en esta página */}
-      <JsonLd graph={[faqSchema(), howToSchema()]} />
+      {/* FAQ, proceso y video: visibles solo en esta página */}
+      <JsonLd graph={[faqSchema(), howToSchema(), videoSchema()]} />
       <Preloader />
       <main className="flex-1">
         <Hero />
         <Marquee />
+        <Presentacion />
         <Camino />
         <Servicios />
         <MarcaPersonal />
