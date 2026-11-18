@@ -1,0 +1,193 @@
+{
+  "regions": [
+    {
+      "id": "sidebar",
+      "kind": "chrome",
+      "note": "Interface element: Navy navigation background",
+      "snap": false,
+      "grid": "A0:B9"
+    },
+    {
+      "id": "topbar",
+      "kind": "chrome",
+      "note": "Interface element: Pale utility bar",
+      "snap": false,
+      "grid": "B0:J0"
+    },
+    {
+      "id": "wordmark",
+      "kind": "text",
+      "note": "Interface element: GX1",
+      "snap": false,
+      "grid": "A0:A0"
+    },
+    {
+      "id": "navigation",
+      "kind": "control",
+      "note": "Interface element: Navigation Hoy Clientes Plan Biblioteca",
+      "snap": false,
+      "grid": "A1:B3"
+    },
+    {
+      "id": "client-links",
+      "kind": "control",
+      "note": "Interface element: Four client links",
+      "snap": false,
+      "grid": "A3:B5"
+    },
+    {
+      "id": "account",
+      "kind": "control",
+      "note": "Interface element: Gabriel and settings",
+      "snap": false,
+      "grid": "A8:B9"
+    },
+    {
+      "id": "search",
+      "kind": "control",
+      "note": "Interface element: Search field",
+      "snap": false,
+      "grid": "B0:F0"
+    },
+    {
+      "id": "capture",
+      "kind": "control",
+      "note": "Interface element: Capture button",
+      "snap": false,
+      "grid": "I0:J0"
+    },
+    {
+      "id": "demo",
+      "kind": "control",
+      "note": "Interface element: Example indicator",
+      "snap": false,
+      "grid": "H0:I0"
+    },
+    {
+      "id": "heading",
+      "kind": "text",
+      "note": "Interface element: Hoy",
+      "snap": false,
+      "grid": "B1:C1"
+    },
+    {
+      "id": "date",
+      "kind": "text",
+      "note": "Interface element: Date and subtitle",
+      "snap": false,
+      "grid": "B1:F1"
+    },
+    {
+      "id": "plan-action",
+      "kind": "control",
+      "note": "Interface element: Planear mi dia",
+      "snap": false,
+      "grid": "I1:J1"
+    },
+    {
+      "id": "priorities",
+      "kind": "text",
+      "note": "Interface element: Mis prioridades 3 elegidas",
+      "snap": false,
+      "grid": "B2:D2"
+    },
+    {
+      "id": "focus-panel",
+      "kind": "chrome",
+      "note": "Interface element: Navy focused task panel",
+      "snap": false,
+      "grid": "B2:G5"
+    },
+    {
+      "id": "focus-client",
+      "kind": "text",
+      "note": "Interface element: CAYCER Contenido",
+      "snap": false,
+      "grid": "C2:D3"
+    },
+    {
+      "id": "focus-title",
+      "kind": "text",
+      "note": "Interface element: Revisar guiones de la semana",
+      "snap": false,
+      "grid": "C3:F3"
+    },
+    {
+      "id": "focus-status",
+      "kind": "control",
+      "note": "Interface element: En curso",
+      "snap": false,
+      "grid": "F2:G3"
+    },
+    {
+      "id": "continuity",
+      "kind": "text",
+      "note": "Interface element: Last advance and next action",
+      "snap": false,
+      "grid": "C3:G4"
+    },
+    {
+      "id": "resume",
+      "kind": "control",
+      "note": "Interface element: Retomar tarea",
+      "snap": false,
+      "grid": "C5:D5"
+    },
+    {
+      "id": "project-link",
+      "kind": "control",
+      "note": "Interface element: Ver proyecto",
+      "snap": false,
+      "grid": "D5:E5"
+    },
+    {
+      "id": "other-tasks",
+      "kind": "control",
+      "note": "Interface element: Two task rows",
+      "snap": false,
+      "grid": "B6:G7"
+    },
+    {
+      "id": "attention-title",
+      "kind": "text",
+      "note": "Interface element: Requiere atencion",
+      "snap": false,
+      "grid": "G2:I2"
+    },
+    {
+      "id": "attention",
+      "kind": "control",
+      "note": "Interface element: Two attention rows",
+      "snap": false,
+      "grid": "G2:J4"
+    },
+    {
+      "id": "inbox",
+      "kind": "control",
+      "note": "Interface element: Inbox with input and two entries",
+      "snap": false,
+      "grid": "G4:J7"
+    },
+    {
+      "id": "agenda-title",
+      "kind": "text",
+      "note": "Interface element: Agenda del dia",
+      "snap": false,
+      "grid": "B7:D8"
+    },
+    {
+      "id": "agenda",
+      "kind": "control",
+      "note": "Interface element: Agenda two actions",
+      "snap": false,
+      "grid": "B8:G9"
+    },
+    {
+      "id": "closing",
+      "kind": "control",
+      "note": "Interface element: Closing day section",
+      "snap": false,
+      "grid": "G7:J9"
+    }
+  ]
+}
