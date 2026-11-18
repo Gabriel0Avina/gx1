@@ -3,12 +3,6 @@ import { Archivo, Geist_Mono, Jost } from "next/font/google";
 import { site } from "@/lib/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
-import SmoothScroll from "@/components/SmoothScroll";
-import CursorGlow from "@/components/CursorGlow";
-import CustomCursor from "@/components/CustomCursor";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 import "./globals.css";
 
 /* Archivo variable: eje wdth 62–125 — display expandido y labels condensados
@@ -84,15 +78,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {/* Entidad GX1: válida en todo el sitio */}
         <JsonLd graph={[organizationSchema(), websiteSchema()]} />
-        <SmoothScroll>
-          <CursorGlow />
-          <CustomCursor />
-          <Navbar />
-          {children}
-          <Footer />
-          <WhatsAppFloat />
-        </SmoothScroll>
+        {children}
       </body>
     </html>
   );
 }
+

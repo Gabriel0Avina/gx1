@@ -10,6 +10,8 @@ const siteUrl = new URL(
 ).origin;
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
+  turbopack: { root: process.cwd() },
   reactCompiler: true,
   env: {
     NEXT_PUBLIC_SITE_URL: siteUrl,

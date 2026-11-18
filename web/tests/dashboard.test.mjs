@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { emptyWorkspace, generateOccurrences, nextOccurrence, workspaceSchema, weekDays } from '../src/lib/dashboard/model.ts';
+test('weekly occurrences are idempotent and retain overdue tasks',()=>{const s=emptyWorkspace();s.routines.push({id:'weekly',title:'Revisar',client:'GX1',frequency:'weekly',nextDate:'2026-11-02',paused:false});const first=generateOccurrences(s,'2026-11-15');assert.equal(first.tasks.length,2);assert.deepEqual(first.tasks.map(t=>t.workDate),['2026-11-02','2026-11-09']);assert.deepEqual(generateOccurrences(first,'2026-11-15'),first);assert.equal(s.tasks.length,0);});
+test('paused routine generates no tasks',()=>{const s=emptyWorkspace();s.routines.push({id:'paused',title:'Revisar',client:'GX1',frequency:'weekly',nextDate:'2026-11-02',paused:true});assert.equal(generateOccurrences(s,'2026-11-15').tasks.length,0);});
+test('monthly recurrence does not skip February',()=>{assert.equal(nextOccurrence('2027-01-31','monthly'),'2027-02-28');assert.equal(nextOccurrence('2028-01-31','monthly'),'2028-02-29');});
+test('week includes weekend without date-zone shifts',()=>{assert.deepEqual(weekDays('2026-11-15'),['2026-11-09','2026-11-10','2026-11-11','2026-11-12','2026-11-13','2026-11-14','2026-11-15']);});
+test('reject malformed workspace and impossible date',()=>{assert.equal(workspaceSchema.safeParse({tasks:[]}).success,false);const s=emptyWorkspace();s.routines.push({id:'bad',title:'Test',client:'GX1',frequency:'weekly',nextDate:'2026-02-31',paused:false});assert.equal(workspaceSchema.safeParse(s).success,false);});
