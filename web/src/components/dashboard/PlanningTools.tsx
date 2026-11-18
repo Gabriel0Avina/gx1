@@ -21,19 +21,19 @@ export function NoteCapture({demo, busy, save}:{demo:boolean;busy:boolean;save:(
     } catch(e) {setMessage(e instanceof Error?e.message:'No se pudo organizar la nota.');}
     finally {setLoading(false);}
   }
-  return <div className="gx-editor-form"><label>Nota de WhatsApp o texto libre<textarea rows={5} maxLength={6000} disabled={loading||rows.length>0} value={note} onChange={e=>setNote(e.target.value)}/></label>
+  return <div className="gx-editor-form gx-capture"><label>Nota de WhatsApp o texto libre<textarea placeholder="Ej. Mañana revisar el formulario de Ecopests" rows={4} maxLength={6000} disabled={loading||rows.length>0} value={note} onChange={e=>setNote(e.target.value)}/></label>
     {!rows.length && <><small>{demo?'Prueba con una acción por línea.':'Organizar con IA envía solo esta nota al modelo a través de Vercel.'}</small><div className="gx-actions">
       {!demo&&<button className="gx-primary" disabled={loading||!note.trim()} onClick={organize}>{loading?'Organizando…':'Organizar con IA'}</button>}
       <button disabled={loading||!note.trim()} onClick={split}>Separar por líneas</button></div></>}
     {!!rows.length&&<form onSubmit={async e=>{e.preventDefault();if(!await save(rows))setMessage('No se guardó. Tus borradores siguen aquí.');}}>
-    {rows.map((row,i)=><fieldset key={row.id} disabled={busy}><legend>Pendiente {i+1}</legend>
+    {rows.map((row,i)=><fieldset className="gx-draft" key={row.id} disabled={busy}><legend>Pendiente {i+1}</legend>
       <label>Acción<input required maxLength={200} value={row.title} onChange={e=>patch(row.id,{title:e.target.value})}/></label>
       <label>Cliente<select value={row.client} onChange={e=>patch(row.id,{client:e.target.value})}><option value="">Por organizar</option>{clients.map(c=><option key={c}>{c}</option>)}</select></label>
       <label>Estado<select value={row.status} onChange={e=>patch(row.id,{status:e.target.value as Task['status']})}><option>Por hacer</option><option>En espera</option></select></label>
       {row.status==='En espera'&&<label>En espera de<input required value={row.waiting} onChange={e=>patch(row.id,{waiting:e.target.value})}/></label>}
-      {([['workDate','Trabajar el'],['dueDate','Entregar el'],['reviewDate','Revisar el']] as const).map(([key,label])=><label key={key}>{label}<input type="date" value={row[key]} onChange={e=>patch(row.id,{[key]:e.target.value})}/></label>)}
+      <details open={row.workDate || row.dueDate || row.reviewDate ? true : undefined}><summary>Fechas de trabajo, entrega y revisión</summary>{([['workDate','Trabajar el'],['dueDate','Entregar el'],['reviewDate','Revisar el']] as const).map(([key,label])=><label key={key}>{label}<input type="date" value={row[key]} onChange={e=>patch(row.id,{[key]:e.target.value})}/></label>)}</details>
       <button type="button" onClick={()=>setRows(rows.filter(r=>r.id!==row.id))}>Quitar</button></fieldset>)}
-      <button type="button" disabled={busy} onClick={()=>setRows([])}>Volver a la nota</button> <button className="gx-primary" disabled={busy}>Guardar pendientes ({rows.length})</button></form>}
+      <div className="gx-review-actions"><button type="button" disabled={busy} onClick={()=>setRows([])}>Editar nota original</button> <button className="gx-primary" disabled={busy}>Guardar pendientes ({rows.length})</button></div></form>}
     <p role="status">{message}</p></div>;
 }
 
@@ -48,6 +48,7 @@ export function DailyChoices({data,open,choose}:{data:Workspace;open:(t:Task)=>v
     return t.status==='En curso'||t.priority?1:0;
   }
   const choices=data.tasks.filter(t=>rank(t)>0).sort((a,b)=>rank(b)-rank(a)).slice(0,3);
-  return <div className="gx-editor-form">{!choices.length&&<p>Aún no hay tareas programadas, en curso o pendientes de revisión.</p>}{choices.map(t=><section key={t.id}><small>{t.client} · {({0:'',5:'Entrega pendiente',3:'Toca dar seguimiento',2:'Trabajo programado',1:'Prioridad o trabajo en curso'})[rank(t)]}</small><h3>{t.title}</h3><button onClick={()=>open(t)}>Abrir tarea</button> {!t.priority&&<button onClick={()=>choose(t)}>Elegir como prioridad</button>}</section>)}</div>;
+  return <div className="gx-editor-form">{!choices.length&&<p>Aún no hay tareas programadas, en curso o pendientes de revisión.</p>}{choices.map(t=><section className="gx-choice" key={t.id}><small>{t.client} · {({0:'',5:'Entrega pendiente',3:'Toca dar seguimiento',2:'Trabajo programado',1:'Prioridad o trabajo en curso'})[rank(t)]}</small><h3>{t.title}</h3><button onClick={()=>open(t)}>Abrir tarea</button> {t.priority?<span className="gx-selected-priority">✓ Prioridad elegida</span>:<button className="gx-primary" onClick={()=>choose(t)}>Elegir como prioridad</button>}</section>)}</div>;
 }
+
 
