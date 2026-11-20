@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { clients, newTask, today, type Task, type Workspace } from '@/lib/dashboard/model';
+import { newTask, today, type Task, type Workspace } from '@/lib/dashboard/model';
 
-export function NoteCapture({demo, busy, save}:{demo:boolean;busy:boolean;save:(tasks:Task[])=>Promise<boolean>}) {
+export function NoteCapture({clients,demo,busy,save}:{clients:string[];demo:boolean;busy:boolean;save:(tasks:Task[])=>Promise<boolean>}) {
   const [note,setNote]=useState('');
   const [rows,setRows]=useState<Task[]>([]);
   const [loading,setLoading]=useState(false);
@@ -50,5 +50,3 @@ export function DailyChoices({data,open,choose}:{data:Workspace;open:(t:Task)=>v
   const choices=data.tasks.filter(t=>rank(t)>0).sort((a,b)=>rank(b)-rank(a)).slice(0,3);
   return <div className="gx-editor-form">{!choices.length&&<p>Aún no hay tareas programadas, en curso o pendientes de revisión.</p>}{choices.map(t=><section className="gx-choice" key={t.id}><small>{t.client} · {({0:'',5:'Entrega pendiente',3:'Toca dar seguimiento',2:'Trabajo programado',1:'Prioridad o trabajo en curso'})[rank(t)]}</small><h3>{t.title}</h3><button onClick={()=>open(t)}>Abrir tarea</button> {t.priority?<span className="gx-selected-priority">✓ Prioridad elegida</span>:<button className="gx-primary" onClick={()=>choose(t)}>Elegir como prioridad</button>}</section>)}</div>;
 }
-
-
