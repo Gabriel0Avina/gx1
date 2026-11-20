@@ -1,19 +1,24 @@
-# Dashboard — dirección aprobada
+# Dashboard — evolución de tareas, noviembre 2026
 
-Gabriel aprobó las tres imágenes de `.impeccable/mocks/dashboard-v1/` el 12 de noviembre de 2026. Son la referencia visual; los pendientes mostrados son ejemplos.
+Modo: Operate. Extensión del dashboard aprobado, conservando Hoy, Clientes, Plan, Biblioteca, Ajustes y acceso por correo. La identidad GX1 y la composición general existentes son la autoridad; no se reemplaza la página pública.
 
 ## Direction contract
 
-THESIS: abrir Hoy y retomar una acción con su contexto; listas compartidas entre vistas.
+THESIS: elegir el siguiente paso y terminarlo con un checkbox reconocible, conservando el contexto y la posibilidad de deshacer.
 
-OWN-WORLD: navegación navy, superficie gris azulada clara, Archivo, acento cyan, reglas finas y controles familiares. Conservar la identidad GX1.
+OWN-WORLD: navy profundo en navegación y foco; superficie plata fría para trabajar, Archivo en controles y Jost en títulos. Cyan reservado a acciones y progreso. Ala original de GX1, bordes finos y material metálico discreto.
 
-STORY: capturar un pendiente, organizarlo, trabajar, revisar el resultado y guardar la continuidad.
+STORY: crear un cliente, capturar una tarea, filtrar por cliente, marcar sus pasos, completar, comprobar lo hecho o reabrir. Fechas de trabajo y entrega siguen separadas.
 
-FIRST VIEWPORT: sidebar de 254/1586 del ancho, barra de búsqueda y captura; Hoy con dos columnas, tarea principal navy a la izquierda y atención e inbox a la derecha. Referencia 1586 × 992. Adaptar a móvil con navegación compacta y una columna.
+FIRST VIEWPORT: sidebar estable, búsqueda y captura superior. Hoy coloca el tablero a la izquierda y el foco y atención a la derecha; tablero principal con Por hacer/En curso/Hecho, filtro Hoy/Todo/Hechas, captura directa y conteo verificable. En pantallas estrechas la navegación se pliega y tres botones permiten cambiar de columna.
 
-FORM: composición fijada por las tres imágenes aprobadas por el usuario; no abrir una nueva ronda de dirección.
+FORM: extensión de la dirección existente aprobada; sin selección de un mundo nuevo. El usuario eligió tablero por estados como prioridad de uso. Interacción distintiva: checkbox → guardado confirmado → progreso y Deshacer. Movimiento corto de estado, sin secuencia de entrada.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
 
-No hay placas raster de contenido: todos los elementos de las referencias son texto, iconos y controles. La maqueta no se usa como fondo ni como interfaz.
+## Referencias funcionales
+- Todoist, Today: prioridades, revisar tareas terminadas y agrupar el día. https://www.todoist.com/help/todoist/get-started/plan-your-day-with-the-today-view-UVUXaiSs
+- Things, Scheduling: distinguir fecha de trabajo y deadline. https://culturedcode.com/things/support/articles/2803579/
+- TickTick, Suggested Tasks: ayudar a elegir sin reemplazar el criterio del usuario. https://help.ticktick.com/articles/7401564165023727616
+
+Sin gamificación, métricas inventadas ni envío de tareas reales a terceros para investigación. Los pasos existentes siguen en el campo checklist; completedAt es opcional para compatibilidad con datos anteriores. Una tarea antigua hecha sin fecha no cuenta como completada hoy.
